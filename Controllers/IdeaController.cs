@@ -22,7 +22,7 @@ namespace brightIdeasTest.Controllers
                 ViewBag.alias = HttpContext.Session.GetString("alias");
                 ViewBag.id = HttpContext.Session.GetInt32("userId");
 
-                ViewBag.allIdeas = _context.Ideas.Include(i => i.IdeaVotes).Include(i => i.User);
+                ViewBag.allIdeas = _context.Ideas.Include(i => i.IdeaVotes).Include(i => i.User).OrderByDescending(i => i.IdeaVotes.Sum(v => v.Direction));
                 return View();
             }
             TempData["error"] = "You must be logged in to view.";

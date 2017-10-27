@@ -18,13 +18,10 @@
         </div>
         <div class="col-sm-7">
             <p class="desc">@i.Description</p>
-        </div>
-        <div class="col-sm-1">
             @if (ViewBag.id == i.User.UserId) {
-                <a href="bright_ideas/@i.IdeaId/delete">X</a>
+                <a class="delete" href="bright_ideas/@i.IdeaId/delete">X</a>
             }
         </div>
-        <div class="col-sm-2"></div>
     </div>
     <div class="row">
         <div class="col-sm-2"></div>
