@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Login/Registration";
+}
+@model brightIdeasTest.Models.RegisterViewModel
+
+<div class="row">
+<h1>Welcome!</h1>
+<p><span class="rederror">@TempData["error"]</span></p>
+
+<div class="col-sm-6">
+    <h3>Register</h3>
+    <form asp-action="register" method="post">
+        <div class="form-group row">
+            <label asp-for="Name" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+            <input asp-for="Name" class="form-control">
+            </div>
+            <div class="col-sm-3"><span class="rederror" asp-validation-for="Name"></span></div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Alias" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+            <input asp-for="Alias" class="form-control">
+            </div>
+            <div class="col-sm-3"><span class="rederror" asp-validation-for="Alias"></span>
+                                <!-- <span class="rederror" asp-validation-for="UniqueAlias"></span> -->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Email" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+            <input asp-for="Email" class="form-control">
+            </div>
+            <div class="col-sm-3"><span class="rederror" asp-validation-for="Email"></span>
+                                <!-- <span class="rederror" asp-validation-for="UniqueEmail"></span> -->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Password" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+            <input asp-for="Password" class="form-control">
+            </div>
+            <div class="col-sm-3"><span class="rederror" asp-validation-for="Password"></span></div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ConfirmPassword" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+            <input asp-for="ConfirmPassword" class="form-control">
+            </div>
+            <div class="col-sm-3"><span class="rederror" asp-validation-for="ConfirmPassword"></span></div>
+        </div>
+        <div class="row">
+        <div class="col-sm-9">
+            <input type="submit" value="Register" class="btn btn-primary pull-right">
+        </div>
+        </div>
+    </form>    
+</div>
+
+<div class="col-sm-5">
+    <h3>Log In</h3>
+    <form action="login" method="post">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Alias/Email:</label>
+            <div class="col-sm-4">
+            <input class="form-control" type="text" name="loginval">
+            </div>
+            <div class="col-sm-3"><span class="rederror">@ViewBag.loginerror</span></div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-4">
+            <input type="password" class="form-control" name="loginpassword">
+            </div>
+            <div class="col-sm-3"><span class="rederror">@ViewBag.pwerror</span></div>
+        </div>
+        <div class="row">
+        <div class="col-sm-7">
+            <input type="submit" value="Log In" class="btn btn-primary pull-right">
+        </div>
+        </div>
+    </form>
+</div>
+
+</div>

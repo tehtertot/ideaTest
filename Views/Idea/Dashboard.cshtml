@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Bright Ideas";
+}
+
+<h1>Hi, @ViewBag.alias!</h1>
+
+<form asp-action="AddIdea" method="POST">
+    <textarea name="desc"></textarea>
+    <input type="submit" value="Add Idea!">
+</form>
+<p><span class="rederror">@TempData["error"]</span></p>
+<hr>
+
+@foreach(var i in ViewBag.allIdeas) {
+    <div class="row">
+        <div class="col-sm-2">
+            <p><a href="/users/@i.User.UserId">@i.User.Alias</a> says:</p>
+        </div>
+        <div class="col-sm-7">
+            <p class="desc">@i.Description</p>
+        </div>
+        <div class="col-sm-1">
+            @if (ViewBag.id == i.User.UserId) {
+                <a href="bright_ideas/@i.IdeaId/delete">X</a>
+            }
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-7">
+            <a asp-controller="Idea" asp-action="Vote" asp-route-id="@i.IdeaId" asp-route-dir="up"><img class="arrow" src="~/images/up.png" alt=""></a>
+            <a asp-controller="Idea" asp-action="Vote" asp-route-id="@i.IdeaId" asp-route-dir="down"><img class="arrow" src="~/images/down.png" alt=""></a>
+
+            @{
+                int up = 0;
+                int down = 0;
+                foreach (var v in i.IdeaVotes) {
+                    if (v.Direction == 1) {
+                        up++;
+                    }
+                    else {
+                        down++;
+                    }
+                }
+            }
+            Upvotes: <a asp-controller="Idea" asp-action="Show" asp-route-id="@i.IdeaId">@up</a> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            Downvotes: <a asp-controller="Idea" asp-action="Show" asp-route-id="@i.IdeaId">@down</a>
+        </div>
+    </div>
+}

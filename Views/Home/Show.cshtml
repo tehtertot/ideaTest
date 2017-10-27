@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Bright Ideas";
+}
+
+<h1>User Info</h1>
+<h3>Name: @ViewBag.user.Name</h3>
+<h3>Alias: @ViewBag.user.Alias</h3>
+<h3>Email: @ViewBag.user.Email</h3>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-5">
+        <h4>My Ideas</h4>
+        <p>Total: @ViewBag.user.NumIdeas</p>
+        <p>Total Upvotes: @ViewBag.user.NumIdeaUps</p>
+        <p>Total Downvotes: @ViewBag.user.NumIdeaDowns</p>
+    </div>
+    <div class="col-sm-5">
+        <h4>Ideas I Have Voted On</h4>
+        <p>Total: @ViewBag.user.NumIdeasVoted</p>
+        <p>Total Upvotes: @ViewBag.user.NumUpVotes</p>
+        <p>Total Downvotes: @ViewBag.user.NumDownVotes</p>
+    </div>
+    </div>
+</div>

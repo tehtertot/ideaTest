@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Bright Ideas";
+}
+
+<h3>@ViewBag.idea.User.Alias says: </h3>
+<p>@ViewBag.idea.Description</p>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4>Upvoters:</h4>
+        <table class="table table-striped">
+            <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+            @foreach(var u in ViewBag.upvoters) {
+                <tr>
+                    <td><a href="/users/@u.Voter.UserId">@u.Voter.Alias</a></td>
+                    <td>@u.Voter.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Downvoters:</h4>
+        <table class="table table-striped">
+            <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+            @foreach(var u in ViewBag.downvoters) {
+                <tr>
+                    <td><a href="/users/@u.Voter.UserId">@u.Voter.Alias</a></td>
+                    <td>@u.Voter.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
